@@ -109,7 +109,7 @@
  - Abra o terminal da instância EC2 criada e execute o comando `sudo su`.
  - Execute o comando `sudo yum update -y` para garantir que serão sempre as versões mais atualizadas dos arquivos Linux que rodarão.
  - Installe o pacote para NFS com comando `sudo yum install -y amazon-efs-utils`.
- - Cri3 um novo diretório para o NFS usando o comando sudo mkdir /mnt/efs.
+ - Crie um novo diretório para o NFS usando o comando sudo mkdir /mnt/efs.
 Montar o NFS no diretório criado usando o comando `sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 [DNS do EFS]:/ [caminho local]`.
  - Para verficar se o NFS foi montado use o comando `df -h`.
  - Foi criado, também, um diretório com o usuário fernanda com o comando `sudo mkdir /mnt/efs/fernanda`.
