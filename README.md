@@ -110,7 +110,7 @@
  - Execute o comando `sudo yum update -y` para garantir que serão sempre as versões mais atualizadas dos arquivos Linux que rodarão.
  - Installe o pacote para NFS com comando `sudo yum install -y amazon-efs-utils`.
  - Crie um novo diretório para o NFS usando o comando sudo mkdir /mnt/efs.
-Montar o NFS no diretório criado usando o comando `sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 [DNS do EFS]:/ [caminho local]`.
+ - Monte o NFS no diretório criado usando o comando `sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 [DNS do EFS]:/ [caminho local]`.
  - Para verficar se o NFS foi montado use o comando `df -h`.
  - Foi criado, também, um diretório com o usuário fernanda com o comando `sudo mkdir /mnt/efs/fernanda`.
 ![Conectando](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/e66e24d4-8d0c-4fb7-b930-131e7661dcf5)
@@ -128,7 +128,7 @@ Montar o NFS no diretório criado usando o comando `sudo mount -t nfs4 -o nfsver
 
 	# Configurando o scrip de validação:
 
-	- Acesso o diretório `/var/www/html`.
+  - Acesse o diretório `/var/www/html`.
   - Execute o comando `sudo nano index.html` o que for digitado no arquivo irá aparecer na página do acessada pelo IP publico. Salve o arquivo e abra a página no navegador para verificar se funcionou.
  - O scrip usado foi:
 ![html](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/e2b42d0c-6fd9-48f4-ad28-00a41d82bc49)
