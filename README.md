@@ -101,7 +101,7 @@
   - Adicione um nome para o sistema de arquivos e escolha a opção Personalizar.
   - Selecione a opção One zone e, também, a mesma zona de disponibilidade em que a instância foi criada.
   - Mantenha as opções pré-definidas, altere apenas o grupo de segurança para o grupo que for para o serviço EFS;
-  - Abra o sistema de arquivos criado e clique em Anexar, salve o comando sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 [DNS do EFS]:/ [caminho local] pois será necessário mais a frente.
+  - Abra o sistema de arquivos criado e clique em Anexar, salve o comando `sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 [DNS do EFS]:/ [caminho local]` pois será necessário mais a frente.
 
 
 	# Configurando o NFS:
@@ -128,7 +128,7 @@ Montar o NFS no diretório criado usando o comando `sudo mount -t nfs4 -o nfsver
 
 	# Configurando o scrip de validação:
 
-	- Acesso o diretório /var/www/html.
+	- Acesso o diretório `/var/www/html`.
   - Execute o comando `sudo nano index.html` o que for digitado no arquivo irá aparecer na página do acessada pelo IP publico. Salve o arquivo e abra a página no navegador para verificar se funcionou.
  - O scrip usado foi:
 ![html](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/e2b42d0c-6fd9-48f4-ad28-00a41d82bc49)
@@ -141,7 +141,7 @@ Montar o NFS no diretório criado usando o comando `sudo mount -t nfs4 -o nfsver
 - Execute o comando `nano service_status.sh` dentro do diretório /mnt/efs/fernanda e crie o script.
 - Salve o arquivo e execute o comando `sudo chmod +x service_status.sh`.
 - Execute o comando `./service_status.sh`.
-- Execute o comando `EDITOR=nano crontab -e` e digite */5 * * * * /[caminho de onde está o script/nome do script].
+- Execute o comando `EDITOR=nano crontab -e` e digite `*/5 * * * * /[caminho de onde está o script/nome do script]`.
 - Salve o arquio.
 - Para verificar se funcionou é preciso esperar alguns minutos para que os arquivos .txt atualizem. O documento pode ser lido com o comando `cat httpd-online.sh`.
 - Para a validação do serviço offline é necessário interromper o apache com o comando `sudo systemctl stop httpd` e novamente aguardar alguns minutos para o arquivo httpd-offline.txt seja atualizado.
