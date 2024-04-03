@@ -131,8 +131,7 @@
   - Acesse o diretório `/var/www/html`.
   - Execute o comando `sudo nano index.html` o que for digitado no arquivo irá aparecer na página do acessada pelo IP publico. Salve o arquivo e abra a página no navegador para verificar se funcionou.
  - O scrip usado foi:
-   ```
-   <!DOCTYPE html>
+ ``` <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -142,8 +141,8 @@
 <body>
     <h1>Projeto Compass!</h1>
 </body>
-</html>
-´´´
+</html>```
+
 ![html](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/e2b42d0c-6fd9-48f4-ad28-00a41d82bc49)
 
 ![apache1](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/9296f3f5-fb36-4d03-b6ce-838f2621404b)
@@ -160,8 +159,7 @@
 - Para a validação do serviço offline é necessário interromper o apache com o comando `sudo systemctl stop httpd` e novamente aguardar alguns minutos para o arquivo httpd-offline.txt seja atualizado.
 - O script usado foi este:
 
-   ```
-  #!/bin/bash
+ ```#!/bin/bash
 
 service_name="Apache"
 timestamp=$(date +"%Y-%m-%d %H:%M:%S")
@@ -170,8 +168,7 @@ timestamp=$(date +"%Y-%m-%d %H:%M:%S")
 		echo "Data/Hora: $timestamp - $service_name - Serviço HTTPD - Status: O serviço está online" >> "/mnt/efs/fernanda/httpd-online.txt"
 	else
 		echo "Data/Hora: $timestamp - $service_name - Serviço HTTPD - Status: O serviço está offline" >> "/mnt/efs/fernanda/httpd-offline.txt"
-	fi
- ´´´
+	fi```
   
 ![online](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/de3f32d3-8ca0-46aa-8023-b445a0a15ba4)
 
