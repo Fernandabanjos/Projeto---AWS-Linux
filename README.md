@@ -48,7 +48,8 @@
 - Clique em "Alocar endereço IP elástico".
 - Selecione o ip alocado e clique em Ações e em Associar endereço IP elástico.
 - Selecione a instância EC2 criada anteriormente e clique em Associar.
-![ip](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/da9054bb-c0d6-4c29-bf89-222b29ef29c8)
+![ip](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/865fff36-1fef-4142-b051-4da4e5911187)
+
 
 # Configurando gateway de internet:
 
@@ -113,17 +114,24 @@
  - Monte o NFS no diretório criado usando o comando `sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 [DNS do EFS]:/ [caminho local]`.
  - Para verficar se o NFS foi montado use o comando `df -h`.
  - Foi criado, também, um diretório com o usuário fernanda com o comando `sudo mkdir /mnt/efs/fernanda`.
+![df-h](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/86f37e4c-c793-48d4-a37f-7c4031b7eb25)
+
 ![Conectando](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/e66e24d4-8d0c-4fb7-b930-131e7661dcf5)
 
+ - Para evitar que o EFS pare após a instância/servidor reiniciar configure o NFS para montar automaticamente no boot usando o comando `sudo nano /etc/fstab`.
+ - Adicionar a seguinte linha no arquivo /etc/fstab:
+   ` IP_OU_DNS_DO_NFS:/ /mnt/nfs nfs defaults 0 0`
+ - Salve o arquivo /etc/fstab.
+![nano](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/ee6ac236-0f17-4724-b777-38e2969626ff)
 
 # Configurando o Apache:
 
-- Execute o comando sudo yum update -y para atualizar o sistema.
-- Execute o comando sudo yum install httpd -y para instalar o apache.
-- Execute o comando sudo systemctl start httpd para iniciar o apache.
-- Execute o comando sudo systemctl enable httpd para habilitar o apache para iniciar automaticamente.
-- Execute o comando sudo systemctl status httpd para verificar o status do apache.
-- Para parar o apache, execute o comando sudo systemctl stop httpd.
+- Execute o comando `sudo yum update -y` para atualizar o sistema.
+- Execute o comando `sudo yum install httpd -y` para instalar o apache.
+- Execute o comando `sudo systemctl start httpd` para iniciar o apache.
+- Execute o comando `sudo systemctl enable httpd` para habilitar o apache para iniciar automaticamente.
+- Execute o comando `sudo systemctl status httpd` para verificar o status do apache.
+- Para parar o apache, execute o comando `sudo systemctl stop httpd`.
 ![apache](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/84a722cd-b779-4063-a5d4-7e727bf02cf6)
 
 	# Configurando o scrip de validação:
