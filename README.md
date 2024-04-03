@@ -153,7 +153,7 @@
 - Salve o arquivo.
 - Para verificar se funcionou é preciso esperar alguns minutos para que os arquivos .txt atualizem. O documento pode ser lido com o comando `cat httpd-online.sh`.
 - Para a validação do serviço offline é necessário interromper o apache com o comando `sudo systemctl stop httpd` e novamente aguardar alguns minutos para o arquivo httpd-offline.txt seja atualizado.
-- O scrip usado foi este:
+- O script usado foi este:
 ```
 #!/bin/bash
 
