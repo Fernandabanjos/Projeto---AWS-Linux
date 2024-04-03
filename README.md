@@ -54,7 +54,7 @@
 # Configurando gateway de internet:
 
 - Acesse a console AWS e pesquise pelo serviço VPC.
-- No menu lateral esquerdo procure por Gateways de Internet e clique em Criar gatway de internet
+- No menu lateral esquerdo procure por Gateways de Internet e clique em Criar gateway de internet
 - Escolha um nome para o gateway.
 - Selecione o gateway criado e clique em Ações e Associar à VPC.
 - Selecione a mesma VPC da instância criada e associe.
@@ -79,7 +79,7 @@
    Alvo: Gateway de internet e, selecione o gateway que criado anteriormente.
 
 # Liberar as portas de comunicação para acesso público.
-- Acesse a console AWS na pagina do serviço EC2, e clicque em Segurança e depois em Grupos de segurança no menu lateral esquerdo.
+- Acesse a console AWS na pagina do serviço EC2, e clique em Segurança e depois em Grupos de segurança no menu lateral esquerdo.
 - Selecione o grupo de segurança da instância EC2 criada anteriormente.
 - Clique em Editar regras de entrada.
 - Configurar as seguintes regras:
@@ -95,22 +95,22 @@
 - No campo de origem escolha o mesmo grupo de segurança que foi criado para a instância EC2.
   
 
-  # Serviço de Elastica File System (EFS):
+  # Serviço de Elastic File System (EFS):
 
 	- No console AWS, pesquise pelo serviço de EFS;
   - No menu lateral esquerdo, clique em Sistemas de arquivos e, na sequência, em Criar sistema de arquivos.
   - Adicione um nome para o sistema de arquivos e escolha a opção Personalizar.
   - Selecione a opção One zone e, também, a mesma zona de disponibilidade em que a instância foi criada.
-  - Mantenha as opções pré-definidas, altere apenas o grupo de segurança para o grupo que for para o serviço EFS;
-  - Abra o sistema de arquivos criado e clique em Anexar, salve o comando `sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 [DNS do EFS]:/ [caminho local]` pois será necessário mais a frente.
+  - Mantenha as opções pré-definidas, altere apenas o grupo de segurança para o grupo que foi criado para o serviço EFS;
+  - Abra o sistema de arquivos criado e clique em Anexar, salve o comando `sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 [DNS do EFS]:/ [caminho local]` pois, será necessário mais a frente.
 
 
 	# Configurando o NFS:
 
  - Abra o terminal da instância EC2 criada e execute o comando `sudo su`.
- - Execute o comando `sudo yum update -y` para garantir que serão sempre as versões mais atualizadas dos arquivos Linux que rodarão.
+ - Execute o comando `sudo yum update -y` para garantir que serão sempre as versões mais atualizadas dos arquivos Linux.
  - Installe o pacote para NFS com comando `sudo yum install -y amazon-efs-utils`.
- - Crie um novo diretório para o NFS usando o comando sudo mkdir /mnt/efs.
+ - Crie um novo diretório para o NFS usando o comando `sudo mkdir /mnt/efs`.
  - Monte o NFS no diretório criado usando o comando `sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 [DNS do EFS]:/ [caminho local]`.
  - Para verficar se o NFS foi montado use o comando `df -h`.
  - Foi criado, também, um diretório com o usuário fernanda com o comando `sudo mkdir /mnt/efs/fernanda`.
@@ -119,7 +119,7 @@
 ![Conectando](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/e66e24d4-8d0c-4fb7-b930-131e7661dcf5)
 
  - Para evitar que o EFS pare após a instância/servidor reiniciar configure o NFS para montar automaticamente no boot usando o comando `sudo nano /etc/fstab`.
- - Adicionar a seguinte linha no arquivo /etc/fstab:
+ - Adicione a seguinte linha no arquivo /etc/fstab:
    ` IP_OU_DNS_DO_NFS:/ /mnt/nfs nfs defaults 0 0`
  - Salve o arquivo /etc/fstab.
 ![nano](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/ee6ac236-0f17-4724-b777-38e2969626ff)
@@ -137,7 +137,7 @@
 	# Configurando o script de validação:
 
   - Acesse o diretório `/var/www/html`.
-  - Execute o comando `sudo nano index.html` o que for digitado no arquivo irá aparecer na página do acessada pelo IP publico. Salve o arquivo e abra a página no navegador para verificar se funcionou.
+  - Execute o comando `sudo nano index.html` o que for digitado no arquivo irá aparecer na página acessada pelo IP publico. Salve o arquivo e abra a página no navegador para verificar se funcionou.
   - O script usado foi:
     ![html1](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/21c1e97d-781d-4b86-9b07-1bd6ded3d313)
 
@@ -150,9 +150,10 @@
 - Salve o arquivo e execute o comando `sudo chmod +x service_status.sh`.
 - Execute o comando `./service_status.sh`.
 - Execute o comando `EDITOR=nano crontab -e` e digite `*/5 * * * * /[caminho de onde está o script/nome do script]`.
-- Salve o arquio.
+- Salve o arquivo.
 - Para verificar se funcionou é preciso esperar alguns minutos para que os arquivos .txt atualizem. O documento pode ser lido com o comando `cat httpd-online.sh`.
 - Para a validação do serviço offline é necessário interromper o apache com o comando `sudo systemctl stop httpd` e novamente aguardar alguns minutos para o arquivo httpd-offline.txt seja atualizado.
+- O scrip usado foi este:
 ```
 #!/bin/bash
 
