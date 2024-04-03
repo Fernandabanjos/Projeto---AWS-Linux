@@ -143,10 +143,11 @@
 </body>
 </html>```
 
+<u1>
 ![html](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/e2b42d0c-6fd9-48f4-ad28-00a41d82bc49)
 
 ![apache1](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/9296f3f5-fb36-4d03-b6ce-838f2621404b)
-
+<\u1>
 
 # Criando o scrip dos arquivos online ou offline e execução automatizada do script a cada 5 minutos:
 
@@ -158,7 +159,7 @@
 - Para verificar se funcionou é preciso esperar alguns minutos para que os arquivos .txt atualizem. O documento pode ser lido com o comando `cat httpd-online.sh`.
 - Para a validação do serviço offline é necessário interromper o apache com o comando `sudo systemctl stop httpd` e novamente aguardar alguns minutos para o arquivo httpd-offline.txt seja atualizado.
 - O script usado foi este:
-
+<u1>
  ```#!/bin/bash
 
 service_name="Apache"
@@ -169,7 +170,8 @@ timestamp=$(date +"%Y-%m-%d %H:%M:%S")
 	else
 		echo "Data/Hora: $timestamp - $service_name - Serviço HTTPD - Status: O serviço está offline" >> "/mnt/efs/fernanda/httpd-offline.txt"
 	fi```
-  
+  <\u1>
+
 ![online](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/de3f32d3-8ca0-46aa-8023-b445a0a15ba4)
 
 
