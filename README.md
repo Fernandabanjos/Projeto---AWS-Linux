@@ -152,7 +152,7 @@
 - Execute o comando `./service_status.sh`.
 - Execute o comando `EDITOR=nano crontab -e` e digite `*/5 * * * * /[caminho de onde está o script/nome do script]`.
 - Salve o arquivo.
-- Para verificar se funcionou é preciso esperar alguns minutos para que os arquivos .txt atualizem. O documento pode ser lido com o comando `cat httpd-online.sh`.
+- Para verificar se funcionou é preciso esperar alguns minutos para que os arquivos .txt atualizem. O documento pode ser lido com o comando `cat httpd-online.txt`.
 - Para a validação do serviço offline é necessário interromper o apache com o comando `sudo systemctl stop httpd` e novamente aguardar alguns minutos para o arquivo httpd-offline.txt seja atualizado.
 - O script usado foi este:
 ```
@@ -167,8 +167,8 @@ timestamp=$(date +"%Y-%m-%d %H:%M:%S")
 		echo "Data/Hora: $timestamp - $service_name - Serviço HTTPD - Status: O serviço está offline" >> "/mnt/efs/fernanda/httpd-offline.txt"
 	fi
 ```
+![onoff](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/60e65cd9-3dfe-4339-9677-b4368c210262)
 
- ![online](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/de3f32d3-8ca0-46aa-8023-b445a0a15ba4)
 
 
 	
