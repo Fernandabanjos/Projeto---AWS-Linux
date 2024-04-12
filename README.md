@@ -120,7 +120,8 @@
 
  - Para evitar que o EFS pare após a instância/servidor reiniciar configure o NFS para montar automaticamente no boot usando o comando `sudo nano /etc/fstab`.
  - Adicione a seguinte linha no arquivo /etc/fstab:
-   ` IP_OU_DNS_DO_NFS:/ /mnt/efs nfs defaults 0 0`
+   ` IP_OU_DNS_DO_NFS:/ /mnt/nfs nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport,_netdev 0 0 `
+
  - Salve o arquivo /etc/fstab.
 ![Captura de tela 2024-04-11 230809](https://github.com/Fernandabanjos/Projeto---AWS-Linux/assets/142920603/b191c893-4799-4f40-b099-4c141f64c4f9)
 
